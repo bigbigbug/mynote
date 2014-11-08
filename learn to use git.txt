@@ -1,0 +1,71 @@
+--install git
+$ git
+The program 'git' is currently not installed. You can install it by typing:
+sudo apt-get install git
+
+--setup your git
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+--create the repository
+$ mkdir learngit
+$ cd learngit
+$ pwd
+/Users/michael/learngit
+
+$ git init
+Initialized empty Git repository in /Users/michael/learngit/.git/
+
+--add and commit
+言归正传，现在我们编写一个readme.txt文件，内容如下：
+
+Git is a version control system.
+Git is free software.
+一定要放到learngit目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。
+
+第一步，用命令git add告诉Git，把文件添加到仓库：
+$ git add readme.txt
+执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。
+
+第二步，用命令git commit告诉Git，把文件提交到仓库：
+$ git commit -m "wrote a readme file"
+[master (root-commit) cb926e7] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.txt
+
+--git status and git diff
+$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#    modified:   readme.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git diff readme.txt 
+diff --git a/readme.txt b/readme.txt
+index 46d49bf..9247db6 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+
+--view the history
+$ git log
+$ git log --pretty=oneline
+
+--go back to last version
+回退到上一个版本，使用git reset命令：
+$ git reset --hard HEAD^
+HEAD is now at ea34578 add distributed
+
+$ git reset --hard 3628164  --the commit id don't need to write complete
+HEAD is now at 3628164 append GPL
+
+
+
+
